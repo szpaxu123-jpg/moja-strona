@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marcel Szpak – Strony internetowe na zamówienie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--fg:#14213d;--muted:#5b6478;--card:#f3f5fa;--accent:#2563eb;--line:#e1e5ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1424;--fg:#eef1f8;--muted:#a3adc4;--card:#182038;--accent:#6ea0ff;--line:#2a3452}}
+:root[data-theme="dark"]{--bg:#0e1424;--fg:#eef1f8;--muted:#a3adc4;--card:#182038;--accent:#6ea0ff;--line:#2a3452}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;flex-wrap:wrap;gap:10px}
+nav b{font-size:1.1rem}
+nav a{color:var(--fg);text-decoration:none;margin-left:16px;font-size:.95rem}
+nav a:hover{color:var(--accent)}
+.hero{padding:64px 0 48px}
+.hero h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.15;margin:0 0 16px}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:560px}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600;border:0;font-size:1rem;cursor:pointer}
+section{padding:44px 0;border-top:1px solid var(--line)}
+h2{margin:0 0 20px;font-size:1.6rem}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border-radius:14px;padding:20px}
+.card h3{margin:0 0 6px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted)}
+.shot{aspect-ratio:16/10;border-radius:10px;background:linear-gradient(135deg,var(--accent),#8b5cf6);margin-bottom:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover}
+.price{font-size:1.6rem;font-weight:700}
+.stars{color:#f5a524;letter-spacing:2px}
+form{display:grid;gap:12px;max-width:520px}
+input,textarea,select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:inherit}
+.empty{color:var(--muted)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.1rem}
+.logo svg{width:44px;height:30px;animation:bob 3s ease-in-out infinite}
+.wing{transform-origin:30px 22px;animation:flap .7s ease-in-out infinite alternate}
+@keyframes flap{from{transform:rotate(14deg)}to{transform:rotate(-34deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.hero{position:relative;overflow:hidden}
+.lead{font-size:1.15rem;color:var(--fg)!important;max-width:680px!important;border-left:4px solid var(--accent);padding-left:14px;margin:0 0 28px}
+.fly{position:absolute;top:30px;left:-80px;width:56px;opacity:.55;animation:fly 14s linear infinite;pointer-events:none}
+.fly.b{top:110px;width:34px;opacity:.35;animation-duration:19s;animation-delay:-8s}
+.fly svg{width:100%;height:auto}
+@keyframes fly{0%{transform:translate(0,0)}50%{transform:translate(60vw,-22px)}100%{transform:translate(120vw,10px)}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.card{transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 10px 24px rgba(0,0,0,.12)}
+.type{color:var(--accent);font-weight:600;min-height:1.6em;margin:0 0 20px}
+.type:after{content:"|";animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);text-align:center;font-size:.9rem}
+
+header,main,footer{position:relative;z-index:1}
+body{background:var(--bg);overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg .s1,.bg .s2{position:absolute;inset:-50%;background:repeating-linear-gradient(115deg,transparent 0 46px,color-mix(in srgb,var(--accent) 7%,transparent) 46px 92px);animation:slide 40s linear infinite}
+.bg .s2{background:repeating-linear-gradient(115deg,transparent 0 120px,color-mix(in srgb,var(--accent) 10%,transparent) 120px 128px);animation-duration:25s;animation-direction:reverse}
+@keyframes slide{to{transform:translateX(184px)}}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35}
+.b1{width:420px;height:420px;background:var(--accent);top:-120px;left:-100px;animation:drift 18s ease-in-out infinite alternate}
+.b2{width:360px;height:360px;background:#8b5cf6;top:40vh;right:-120px;animation:drift 22s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(120px,90px) scale(1.2)}}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),#8b5cf6,#f5a524);z-index:99}
+#glow{position:fixed;width:320px;height:320px;margin:-160px 0 0 -160px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 22%,transparent),transparent 65%);pointer-events:none;z-index:0;left:-999px;top:0}
+.sky{position:absolute;left:0;top:0;width:100%;height:460px;overflow:hidden;pointer-events:none;z-index:0}
+.fly{position:absolute;left:0;animation:flyx linear infinite;will-change:transform}
+.fly svg{display:block;width:100%;height:auto;animation:wob ease-in-out infinite}
+.fly .body{fill:var(--accent)}.fly .w{fill:var(--fg)}
+@keyframes flyx{from{transform:translateX(-120px)}to{transform:translateX(calc(100vw + 120px))}}
+@keyframes wob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-26px) rotate(5deg)}}
+.fly .wing{animation-duration:.35s}
+.grad{background:linear-gradient(90deg,var(--accent),#8b5cf6,#f5a524,var(--accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:300% 0}}
+.hero h1,.lead,.type{animation:up .9s cubic-bezier(.2,.8,.2,1) both}
+.hero h1{animation-delay:.15s}.type{animation-delay:.3s}
+@keyframes up{from{opacity:0;transform:translateY(30px)}}
+.btn{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 45%,transparent)}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn:after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sweep 3.2s ease-in-out infinite}
+@keyframes sweep{60%,100%{left:130%}}
+.shot{transition:transform .4s}.card:hover .shot{transform:scale(1.04) rotate(-1deg)}
+nav a{position:relative}nav a:after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:0;background:var(--accent);transition:width .3s}nav a:hover:after{width:100%}
+header{backdrop-filter:blur(8px);background:color-mix(in srgb,var(--bg) 70%,transparent)}
+.brand{font-family:"Great Vibes","Brush Script MT","Segoe Script",cursive;font-weight:400;font-size:2rem;line-height:1;letter-spacing:.5px}
+
+.bg .dots{position:absolute;inset:0;background-image:radial-gradient(color-mix(in srgb,var(--accent) 35%,transparent) 1.4px,transparent 1.6px);background-size:30px 30px;opacity:.55;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 80%);mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 80%);animation:dotmove 30s linear infinite}
+@keyframes dotmove{to{background-position:30px 30px}}
+.bg .grid{position:absolute;left:-50%;right:-50%;bottom:-30%;height:60%;background:linear-gradient(color-mix(in srgb,var(--accent) 25%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--accent) 25%,transparent) 1px,transparent 1px);background-size:60px 60px;transform:perspective(500px) rotateX(62deg);transform-origin:50% 100%;animation:gridmove 6s linear infinite;-webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000);opacity:.5}
+@keyframes gridmove{to{background-position:0 60px}}
+#float{position:absolute;inset:0}
+.fl{position:absolute;color:var(--accent);opacity:.28;font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;animation:floaty ease-in-out infinite alternate;will-change:transform}
+.fl.win{border:2px solid currentColor;border-radius:8px;background:color-mix(in srgb,var(--bg) 60%,transparent)}
+.fl.win:before{content:"";position:absolute;left:6px;top:6px;width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:9px 0 currentColor,18px 0 currentColor}
+.fl.win:after{content:"";position:absolute;left:8px;right:8px;top:24px;height:3px;border-radius:2px;background:currentColor;box-shadow:0 9px currentColor,0 18px 0 -0px currentColor;opacity:.7}
+.fl.ring{border:3px solid currentColor;border-radius:50%}
+.fl.tri{width:0!important;height:0!important;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:28px solid currentColor}
+@keyframes floaty{from{transform:translate(0,0) rotate(var(--r0))}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r1))}}
+.waves{position:absolute;left:0;bottom:0;width:100%;height:160px}
+.wv1{fill:color-mix(in srgb,var(--accent) 14%,transparent);animation:wave 18s linear infinite}
+.wv2{fill:color-mix(in srgb,#8b5cf6 12%,transparent);animation:wave 28s linear infinite reverse}
+@keyframes wave{to{transform:translateX(-720px)}}
+
+#gl{position:absolute;inset:0;width:100%;height:100%}
+.card{transform-style:preserve-3d;will-change:transform}
+.card.tilt{transition:transform .08s linear,box-shadow .25s}
+html{scroll-behavior:auto}
+section{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+
+.btn:after{display:none}
+.grad{animation:none;background-size:100% 100%}
+section{padding:72px 0}
+.hero{padding:88px 0 64px}
+nav a.cta{color:#fff;padding:9px 18px;margin-left:18px;box-shadow:none}
+nav a.cta:after{display:none}
+.about{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.about p{margin:0 0 14px;max-width:620px;font-size:1.05rem}
+.avatar{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 10px 28px rgba(37,99,235,.35);flex:none}
+.avatar .brand{font-size:3.6rem;margin-top:-6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips span{background:var(--card);border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:.9rem}
+.steps{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.step b{display:flex;width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;align-items:center;justify-content:center;margin-bottom:12px}
+.mock{border-radius:10px;overflow:hidden;border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.18);margin-bottom:14px;background:#fff}
+.mock .bar{height:22px;background:#e8ebf2;display:flex;gap:5px;align-items:center;padding:0 8px}
+.mock .bar i{width:7px;height:7px;border-radius:50%;background:#aab2c5}
+.scr{aspect-ratio:16/10;background:linear-gradient(160deg,var(--a),var(--b));padding:10px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.scr img{width:100%;height:100%;object-fit:cover;margin:-10px;padding:0}
+.mh{display:flex;gap:6px;justify-content:flex-end}
+.mh span{width:24px;height:5px;border-radius:3px;background:rgba(255,255,255,.7)}
+.mhero{margin-top:10px}
+.mhero b{display:block;width:60%;height:13px;border-radius:4px;background:#fff;margin-bottom:8px}
+.mhero u{display:block;width:80%;height:6px;border-radius:3px;background:rgba(255,255,255,.6);margin-bottom:5px}
+.mhero em{display:block;width:30%;height:13px;border-radius:5px;background:#f5a524;margin-top:10px}
+.mrow{display:flex;gap:6px;margin-top:auto}
+.mrow s{flex:1;height:28px;border-radius:5px;background:rgba(255,255,255,.22)}
+.logo .brand{font-size:1.7rem}
+.endcta{min-height:80vh;display:flex;flex-direction:column;justify-content:center;border-top:0}
+.endcta h2{font-size:clamp(1.8rem,5vw,2.8rem);max-width:520px;line-height:1.15}
+.endcta p{color:var(--muted);font-size:1.1rem;max-width:460px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent)}
+nav{position:relative}
+nav .links{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.burger{display:none;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:10px;font-size:1.3rem;line-height:1;padding:8px 14px;cursor:pointer}
+@media (max-width:820px){
+ nav{flex-wrap:wrap}
+ .burger{display:block}
+ nav .links{display:none;width:100%;grid-template-columns:1fr 1fr;gap:6px;padding:4px 0 10px}
+ nav .links.open{display:grid}
+ nav .links a{margin:0;padding:9px 10px;font-size:.95rem;text-align:center;background:var(--card);border-radius:8px}
+ nav .links a:after{display:none}
+ nav .links a.cta{grid-column:1/-1;background:var(--accent);padding:10px}
+}
+nav{padding:8px 0}
+.logo svg{width:36px;height:25px}
+.logo .brand{font-size:1.5rem}
+header{transition:transform .35s ease}
+header.hide{transform:translateY(-110%)}
+@media (max-width:820px){
+ nav .links{position:absolute;top:100%;right:0;width:min(280px,calc(100vw - 40px));max-height:55vh;overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 14px 34px rgba(0,0,0,.28);z-index:60}
+ nav .links a{padding:9px 6px}
+}
+header.hide{transform:none}
+header{position:sticky;top:env(safe-area-inset-top,0px)}
+header nav{padding:3px 0;min-height:0}
+header .logo svg{width:30px;height:20px}
+header .logo .brand{font-size:1.25rem}
+header .logo{gap:6px}
+header nav a{font-size:.88rem;margin-left:12px}
+header nav a.cta{padding:5px 14px;margin-left:14px}
+.burger{padding:3px 11px;font-size:1.05rem;border-radius:8px}
+@media (max-width:820px){
+ nav .links{max-height:38vh;width:min(230px,calc(100vw - 40px));padding:6px;gap:4px}
+ nav .links a{padding:7px 4px;font-size:.88rem}
+ nav .links a.cta{padding:7px}
+}
+@media (max-height:520px){header .logo svg{display:none}}
+.grad{animation:shine 5s linear infinite;background-size:300% 100%}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><canvas id="gl"></canvas><i class="blob b1"></i><i class="blob b2"></i></div><div id="prog"></div>
+<header><div class="wrap"><nav>
+<span class="logo"><svg viewBox="0 0 64 44" aria-hidden="true"><path d="M6 30 L-0 38 L14 33Z" fill="#1b2340"/><ellipse cx="28" cy="27" rx="20" ry="10" fill="#1b2340"/><circle cx="48" cy="19" r="8" fill="#1b2340"/><path d="M55 18 L64 20 L55 23Z" fill="#f5a524"/><circle cx="50" cy="17" r="1.6" fill="#fff"/><g class="wing"><path d="M30 22 Q18 0 4 6 Q16 14 22 28Z" fill="#2563eb"/></g><circle cx="22" cy="30" r="1.2" fill="#fff"/><circle cx="30" cy="32" r="1.2" fill="#fff"/><circle cx="38" cy="30" r="1.2" fill="#fff"/></svg><span class="brand">Marcel Szpak</span></span>
+<button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+<div class="links" id="links"><a href="#omnie">O mnie</a><a href="#projekty">Projekty</a><a href="#oferta">Oferta</a><a href="#opinie">Opinie</a><a class="btn cta" href="#kontakt">Kontakt</a></div>
+</nav></div></header>
+
+<main class="wrap">
+<div class="hero">
+<p class="lead">Cześć, jestem Marcel. Uczę się w technikum, a po lekcjach tworzę strony internetowe, bo uwielbiam zamieniać pomysły w coś, co można zobaczyć i kliknąć. Każdą stronę robię z zaangażowaniem, jakby była moja własna, i z chęcią wysłucham Twoich pomysłów.</p>
+<h1>Strony internetowe <span class="grad">na zamówienie</span></h1>
+<p class="type" id="type"></p>
+<p>Robię proste, czytelne i nowoczesne strony dla małych lokalnych firm – dopasowane do Ciebie i Twoich klientów.</p>
+<p><a class="btn" href="#kontakt">Napisz do mnie</a></p>
+</div>
+
+<section id="omnie">
+<h2>O mnie</h2>
+<div class="about"><div class="avatar"><span class="brand">M</span></div>
+<div><p>Sam projektuję i koduję każdą stronę, więc masz jedną osobę do kontaktu od pomysłu aż do uruchomienia. Traktuję Twoją firmę jak własny projekt i chcę, żebyś z efektu był naprawdę dumny.</p>
+<div class="chips"><span>Indywidualne podejście</span><span>Bezpośredni kontakt</span><span>Otwartość na Twoje pomysły</span></div></div></div>
+</section>
+
+<section id="projekty">
+<h2>Moje projekty</h2>
+<div class="grid" id="projects"></div>
+</section>
+
+<section id="jak">
+<h2>Jak to działa</h2>
+<div class="steps">
+<div class="card step"><b>1</b><h3>Rozmowa</h3><p>Opowiadasz, czym zajmuje się Twoja firma i jaką stronę chcesz mieć.</p></div>
+<div class="card step"><b>2</b><h3>Projekt</h3><p>Przygotowuję układ i wygląd strony, a Ty mówisz, co poprawić.</p></div>
+<div class="card step"><b>3</b><h3>Wykonanie</h3><p>Koduję stronę tak, by działała na telefonie i na komputerze.</p></div>
+<div class="card step"><b>4</b><h3>Uruchomienie</h3><p>Strona trafia do internetu, a w abonamencie dbam o nią dalej.</p></div>
+</div>
+<p class="empty" style="margin-top:14px">Termin ustalamy indywidualnie.</p>
+</section>
+
+<section id="oferta">
+<h2>Oferta</h2>
+<div class="grid">
+<div class="card"><h3>Strona na zamówienie</h3><p>Projekt, wykonanie i uruchomienie strony dla Twojej firmy, także na telefony.</p></div>
+<div class="card"><h3>Abonament miesięczny</h3><p class="price">do uzgodnienia</p><p>Hosting, opieka nad stroną i poprawki. Cenę ustalamy indywidualnie.</p></div>
+</div>
+</section>
+
+<section id="opinie">
+<h2>Opinie klientów</h2>
+<div class="grid" id="reviews"></div>
+<h3 style="margin-top:32px">Dodaj swoją opinię</h3>
+<form id="rform">
+<input id="rname" placeholder="Imię / nazwa firmy" required>
+<select id="rstars"><option value="5">★★★★★ (5)</option><option value="4">★★★★ (4)</option><option value="3">★★★ (3)</option><option value="2">★★ (2)</option><option value="1">★ (1)</option></select>
+<textarea id="rtext" rows="4" placeholder="Twoja opinia" required></textarea>
+<button class="btn" type="submit">Wyślij opinię</button>
+</form>
+</section>
+
+<section id="kontakt">
+<h2>Kontakt</h2>
+<div class="grid">
+<div class="card"><h3>Telefon</h3><p><a href="tel:+48570700978" style="color:var(--accent)">570 700 978</a></p></div>
+<div class="card"><h3>E-mail</h3><p><a href="mailto:szpaxu123@gmail.com" style="color:var(--accent)">szpaxu123@gmail.com</a></p></div>
+</div>
+</section>
+<section id="cta" class="endcta">
+<h2>Masz pomysł na stronę?</h2>
+<p>Opowiedz mi o swojej firmie, a zrobię z tego stronę, z której będziesz naprawdę dumny.</p>
+<p><a class="btn" href="mailto:szpaxu123@gmail.com">Napisz do mnie</a></p>
+</section>
+</main>
+
+<footer>© 2026 Marcel Szpak</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+ if(!window.THREE)return;
+ try{
+ var c=document.getElementById("gl"),R=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true});
+ R.setPixelRatio(Math.min(devicePixelRatio||1,2));
+ var S=new THREE.Scene(),C=new THREE.PerspectiveCamera(50,1,.1,100);C.position.z=9;
+ S.add(new THREE.AmbientLight(0xffffff,.7));
+ var L1=new THREE.PointLight(0x6ea0ff,1.8,40);L1.position.set(6,5,6);S.add(L1);
+ var L2=new THREE.PointLight(0xb084ff,1.5,40);L2.position.set(-6,-4,5);S.add(L2);
+ var G=new THREE.Group();S.add(G);
+ var knot=new THREE.Mesh(new THREE.TorusKnotGeometry(1.5,.45,160,24),new THREE.MeshStandardMaterial({color:0x2563eb,metalness:.6,roughness:.25}));
+ knot.add(new THREE.Mesh(new THREE.TorusKnotGeometry(1.5,.5,160,24),new THREE.MeshBasicMaterial({color:0xffffff,wireframe:true,transparent:true,opacity:.14})));
+ G.add(knot);
+ var knot2=new THREE.Mesh(new THREE.TorusKnotGeometry(1.4,.42,200,24,3,5),new THREE.MeshStandardMaterial({color:0x8b5cf6,metalness:.6,roughness:.25}));
+ knot2.add(new THREE.Mesh(new THREE.TorusKnotGeometry(1.4,.47,200,24,3,5),new THREE.MeshBasicMaterial({color:0xffffff,wireframe:true,transparent:true,opacity:.14})));
+ G.add(knot2);
+ var cols=[0x8b5cf6,0xf5a524,0x2563eb,0x22c1c3,0xec4899],geos=[new THREE.IcosahedronGeometry(.6,0),new THREE.OctahedronGeometry(.6),new THREE.TorusGeometry(.5,.18,16,40),new THREE.BoxGeometry(.8,.8,.8),new THREE.DodecahedronGeometry(.55)],items=[];
+ for(var i=0;i<26;i++){
+  var m=new THREE.Mesh(geos[i%5],new THREE.MeshStandardMaterial({color:cols[i%5],metalness:.4,roughness:.3,transparent:true,opacity:.8,flatShading:i%2==0}));
+  m.position.set((Math.random()-.5)*16,(Math.random()-.5)*22-1,(Math.random()-.5)*7-1);
+  var sc=.5+Math.random()*1.1;m.scale.setScalar(sc);
+  items.push({m:m,sx:(Math.random()-.5)*.8,sy:(Math.random()-.5)*.8,ph:Math.random()*6.28,u:Math.random(),y0:0});G.add(m);
+ }
+ var N=600,pa=new Float32Array(N*3);
+ for(i=0;i<N*3;i++)pa[i]=(Math.random()-.5)*(i%3==1?34:22);
+ var pg=new THREE.BufferGeometry();pg.setAttribute("position",new THREE.BufferAttribute(pa,3));
+ var pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0x8b9cff,size:.045,transparent:true,opacity:.7}));S.add(pts);
+ var mx=0,my=0,sy=0,calm=matchMedia("(prefers-reduced-motion:reduce)").matches?.25:1;
+ function layout(){var tr=Math.max(0,document.documentElement.scrollHeight-innerHeight)*.006,m=innerWidth/innerHeight<1;
+  items.forEach(function(o){o.y0=4-o.u*(tr+8)});
+  if(m){knot2.position.set(0,-tr+2.6,-1);knot2.scale.setScalar(.7)}else{knot2.position.set(3.6,-tr+.4,0);knot2.scale.setScalar(1)}}
+ function size(){var w=innerWidth,h=innerHeight;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix();
+  if(w/h<1){knot.position.set(0,2.4,-1);knot.scale.setScalar(.7)}else{knot.position.set(3.6,.5,0);knot.scale.setScalar(1)}layout()}
+ size();addEventListener("resize",size);addEventListener("load",size);setTimeout(size,1500);
+ addEventListener("scroll",function(){sy=scrollY},{passive:true});
+ var clk=new THREE.Clock();
+ (function loop(){requestAnimationFrame(loop);if(document.hidden)return;
+  var t=clk.getElapsedTime()*calm;
+  knot.rotation.x=t*.35;knot.rotation.y=t*.5;
+  knot2.rotation.x=t*.3;knot2.rotation.y=-t*.45;
+  items.forEach(function(o){o.m.rotation.x+=.004*o.sx*calm*4;o.m.rotation.y+=.004*o.sy*calm*4;o.m.position.y=o.y0+Math.sin(t*.8+o.ph)*.35});
+  G.position.y=sy*.006;G.rotation.y=sy*.0006;pts.rotation.y=t*.02;pts.position.y=sy*.002;
+  C.lookAt(0,0,0);
+  R.render(S,C);})();
+ }catch(e){}
+})();
+(function(){
+ var cur=null;
+ document.addEventListener("pointermove",function(e){
+  var c=e.target.closest&&e.target.closest(".card");
+  if(cur&&cur!==c){cur.style.transform="";cur.classList.remove("tilt")}
+  cur=c;if(!c)return;
+  var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  c.classList.add("tilt");
+  c.style.transform="perspective(700px) rotateX("+(-y*14)+"deg) rotateY("+(x*14)+"deg) translateZ(14px)";
+ },{passive:true});
+})();
+</script>
+<script>
+// Dodawaj swoje projekty tutaj. "img" = link do zdjęcia (opcjonalnie).
+var PROJECTS=[
+ {name:"Fudō Dōjō Kyokushin Karate",desc:"Strona klubu karate w Jastrzębiu-Zdroju.",img:"",a:"#7f1d1d",b:"#111827"},
+ {name:"Black Fryzjer męski",desc:"Strona salonu fryzjerskiego w Jastrzębiu-Zdroju.",img:"",a:"#1f1f1f",b:"#4a4030"}
+];
+// Zatwierdzone opinie wpisuj tutaj.
+var REVIEWS=[
+ // {name:"Jan Kowalski",stars:5,text:"Świetna robota, polecam!"}
+];
+(function(){
+ var els=document.querySelectorAll("section,.card");
+ els.forEach(function(e){e.classList.add("rv")});
+ if("IntersectionObserver" in window){
+  var o=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");o.unobserve(x.target)}})},{threshold:.1});
+  els.forEach(function(e){o.observe(e)});
+ }else{els.forEach(function(e){e.classList.add("in")})}
+})();
+
+(function(){
+ var p=document.getElementById("prog");
+ addEventListener("scroll",function(){var h=document.documentElement;p.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+"%"},{passive:true});
+})();
+
+
+(function(){
+ var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches,raf=0;
+ function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+ function go(y){cancelAnimationFrame(raf);var y0=scrollY,d=y-y0,T=Math.min(1600,Math.max(900,Math.abs(d)*.6)),t0=null;
+  if(reduce){scrollTo(0,y);return}
+  function step(t){if(t0===null)t0=t;var p=Math.min((t-t0)/T,1);scrollTo(0,y0+d*ease(p));if(p<1)raf=requestAnimationFrame(step)}
+  raf=requestAnimationFrame(step)}
+ document.addEventListener("click",function(e){
+  var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;
+  var id=a.getAttribute("href").slice(1),el=id&&document.getElementById(id);if(!el)return;
+  e.preventDefault();
+  var max=document.documentElement.scrollHeight-innerHeight;
+  go(Math.min(el.getBoundingClientRect().top+scrollY-document.querySelector("header").offsetHeight-6,max));
+ });
+ ["wheel","touchstart","keydown"].forEach(function(n){addEventListener(n,function(){cancelAnimationFrame(raf)},{passive:true})});
+})();
+(function(){
+ var b=document.getElementById("burger"),l=document.getElementById("links");
+ b.addEventListener("click",function(){var o=l.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"✕":"☰"});
+ l.addEventListener("click",function(e){if(e.target.closest("a")){l.classList.remove("open");b.setAttribute("aria-expanded","false");b.textContent="☰"}});
+})();
+(function(){
+ var h=document.querySelector("header"),l=document.getElementById("links"),b=document.getElementById("burger"),last=0;
+ function close(){l.classList.remove("open");b.setAttribute("aria-expanded","false");b.textContent="☰"}
+ addEventListener("scroll",function(){var y=scrollY;
+  if(y>last+6)close()
+  last=y},{passive:true});
+ document.addEventListener("click",function(e){if(!e.target.closest("header"))close()});
+})();
+(function(){
+ var el=document.getElementById("type");if(!el)return;
+ var w=["Czytelne.","Nowoczesne.","Na Twoją miarę.","Z pomysłem.","Z sercem do detali."],i=0,j=0,del=false;
+ function t(){var x=w[i];el.textContent=x.slice(0,j);
+  if(!del&&j<x.length){j++;setTimeout(t,90)}
+  else if(!del){del=true;setTimeout(t,1200)}
+  else if(j>0){j--;setTimeout(t,45)}
+  else{del=false;i=(i+1)%w.length;setTimeout(t,300)}}
+ t();
+})();
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+document.getElementById("projects").innerHTML=PROJECTS.map(function(p){
+ var scr=p.img?'<img src="'+esc(p.img)+'" alt="'+esc(p.name)+'">':'<div class="mh"><span></span><span></span><span></span></div><div class="mhero"><b></b><u></u><u style="width:55%"></u><em></em></div><div class="mrow"><s></s><s></s><s></s></div>';
+ return '<div class="card"><div class="mock"><div class="bar"><i></i><i></i><i></i></div><div class="scr" style="--a:'+p.a+';--b:'+p.b+'">'+scr+'</div></div><h3>'+esc(p.name)+'</h3><p>'+esc(p.desc)+'</p></div>'}).join("");
+document.getElementById("reviews").innerHTML=REVIEWS.length?REVIEWS.map(function(r){
+ return '<div class="card"><div class="stars">'+"★".repeat(r.stars)+"☆".repeat(5-r.stars)+'</div><p>'+esc(r.text)+'</p><p><b>'+esc(r.name)+'</b></p></div>'}).join(""):'<p class="empty">Bądź pierwszą osobą, która wystawi opinię!</p>';
+document.getElementById("rform").addEventListener("submit",function(e){
+ e.preventDefault();
+ var n=document.getElementById("rname").value,s=document.getElementById("rstars").value,t=document.getElementById("rtext").value;
+ location.href="mailto:szpaxu123@gmail.com?subject="+encodeURIComponent("Nowa opinia ("+s+"/5) od "+n)+"&body="+encodeURIComponent(t+"\n\n– "+n);
+});
+</script>
+</body>
+</html>
